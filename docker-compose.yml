@@ -1,0 +1,21 @@
+php-nginx:
+  image: richarvey/nginx-php-fpm:latest
+  volumes:
+    - ./conf/ssl:/opt/ssl
+    - .:/var/www/html
+  ports:
+    - "80:80"
+    - "443:443"
+  environment:
+    - PHP_MEM_LIMIT=512Mb
+    - PHP_POST_MAX_SIZE=200M
+    - PHP_UPLOAD_MAX_FILESIZE=200M
+  links:
+    - mysql:mysql
+
+mysql:
+  image: mysql:5.7
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: secret
