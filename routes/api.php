@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('image/{src}', function ($src){
 
-    $image = getImageResource($src);
+    $image = getResource($src);
 
     if($image == null)
         return;
@@ -35,7 +35,7 @@ Route::get('image/{src}', function ($src){
 
 Route::get('video/{src}', function ($src){
 
-    $video = getVideoResource($src);
+    $video = getResource($src);
 
     if($video == null)
         return;

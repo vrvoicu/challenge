@@ -29,17 +29,8 @@ function getDataFromUrl($url){
     return $output;
 }
 
-function getImageResource($basename){
-    if(Cache::get($basename) == '#')
-        return null;
 
-    if(Cache::has($basename))
-        return Cache::get($basename);
-
-    return null;
-}
-
-function getVideoResource($basename){
+function getResource($basename){
     if(Cache::get($basename) == '#')
         return null;
 
