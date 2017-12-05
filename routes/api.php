@@ -31,8 +31,6 @@ Route::get('image/{src}', function ($src){
 
     return $response;
 
-
-//    return response()->file();
 })->name('api.image');
 
 Route::get('video/{src}', function ($src){

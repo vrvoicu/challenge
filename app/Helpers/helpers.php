@@ -59,10 +59,10 @@ function downloadAndStoreVideoResource($url){
     $resource = downloadResource($url);
 
     if($resource != null)
-        Cache::put($basename, $resource, 10);
+        Cache::put($basename, $resource, config('challenge.cache.timeout'));
 
     else
-        Cache::put($basename, "#", 10);
+        Cache::put($basename, "#", config('challenge.cache.timeout'));
 }
 
 function downloadAndStoreImageResource($url, $width = 100, $height = 100){
@@ -77,22 +77,22 @@ function downloadAndStoreImageResource($url, $width = 100, $height = 100){
         $resource_name = substr($basename, 0, $strpos).'.'.pathinfo($url)['extension'];
 
         if(Cache::get($resource_name)) {
-            Cache::put($basename, "#", 10);
+            Cache::put($basename, "#", config('challenge.cache.timeout'));
             return;
         }
 
         $resource = (string)Image::make(Cache::get($resource_name))->resize($width, $height)->encode('jpg');
 
-        Cache::put($basename, $resource, 10);
+        Cache::put($basename, $resource, config('challenge.cache.timeout'));
     }
 
     $resource = downloadResource($url);
 
     if($resource != null)
-        Cache::put($basename, $resource, 10);
+        Cache::put($basename, $resource, config('challenge.cache.timeout'));
 
     else
-        Cache::put($basename, "#", 10);
+        Cache::put($basename, "#", config('challenge.cache.timeout'));
 }
 
 function downloadResource($url){
