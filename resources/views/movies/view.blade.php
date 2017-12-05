@@ -26,7 +26,7 @@
                     <div class="col-xs-12">
 {{--                        <img src="{{ $cardImage['url'] }}">--}}
 {{--                        <img src="{{ getResource($cardImage['url']) }}"/>--}}
-                        <img src="{{ route('api.image', ['name' => basename($cardImage['url'])]) }}"/>
+                        <img src="{{ route('api.image', ['name' => basename($cardImage['url'])]) }}" style="max-width: 100px; max-height: 100px"/>
                         {{--<img src="api/storage/bla.jpg"/>--}}
 
                     </div>

@@ -1,16 +1,8 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
 
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}"/>
-</head>
+@extends('app')
 
-<body>
+@section('content')
 
     <div class="container-fluid">
 
@@ -35,8 +27,6 @@
                 <a href="{{ $element['"reviewAuthor"'] }}">url</a>
 
             @endif
-
-
 
 
             @if(isset($element['body']))
@@ -69,6 +59,4 @@
 
     </div>
 
-</body>
-
-</html>
+@endsection

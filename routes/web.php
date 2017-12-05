@@ -18,5 +18,6 @@
 use Illuminate\Http\File;
 use Illuminate\Http\Response;
 
-Route::get('/', 'IndexController@index');
+Route::get('/import', 'IndexController@import')->name('movies.import');
+Route::get('/', 'IndexController@index')->name('movies.index');
 Route::get('/{id}', 'IndexController@view')->name('movies.view');
