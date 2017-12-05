@@ -36,18 +36,17 @@ function getImageResource($basename){
     if(Cache::has($basename))
         return Cache::get($basename);
 
-    /*if(Storage::disk('public')->exists($basename)){
-        $image = Storage::disk('public')->get($basename);
-        Cache::put($basename, $image, 10);
-        return $image;
-    }*/
+    return null;
 }
 
 function getVideoResource($basename){
     if(Cache::get($basename) == '#')
         return null;
 
-    return Storage::disk('public')->get($basename);
+    if(Cache::has($basename))
+        return Cache::get($basename);
+
+    return null;
 }
 
 function downloadAndStoreVideoResource($url){

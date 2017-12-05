@@ -19,19 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::get('image/{name}', function (Request $request){
-//    return response()->file();
-//    var_dump("aaaa");
-//    exit();
-////    var_dump($request->input());
-////    exit();
-////    \Illuminate\Support\Facades\Cache::get()
-//})->name('resource.image');
-
-Route::get('video', function (Request $request){
-
-});
-
 Route::get('image/{src}', function ($src){
 
     $image = getImageResource($src);
@@ -57,7 +44,7 @@ Route::get('video/{src}', function ($src){
 
     $response = Response::make($video, 200);
     $response->header("Content-Type", 'video/mp4');
-    $response->header("Content-Length", Storage::disk('public')->size($src));
+    $response->header("Content-Length", strlen($video));
 
     return $response;
 

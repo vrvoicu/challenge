@@ -22,10 +22,14 @@ class IndexController extends Controller
         $data = json_decode($data, true);
 
         foreach ($data as $element){
-            Movie::create([
-                'id' => $element['id'],
-                'info' => json_encode($element),
-            ]);
+
+            $movie = Movie::where('info->id', $element['id'])->first();
+
+            if($movie == null)
+                Movie::create([
+                    'id' => $element['id'],
+                    'info' => $element,
+                ]);
         }
 
         return redirect(route('movies.index'));
