@@ -36,6 +36,9 @@ Route::get('image/{src}', function ($src){
 
     $image = getImageResource($src);
 
+    if($image == null)
+        return;
+
     $response = Response::make($image, 200);
     $response->header("Content-Type", 'image/jpeg');
 
@@ -44,3 +47,18 @@ Route::get('image/{src}', function ($src){
 
 //    return response()->file();
 })->name('api.image');
+
+Route::get('video/{src}', function ($src){
+
+    $video = getVideoResource($src);
+
+    if($video == null)
+        return;
+
+    $response = Response::make($video, 200);
+    $response->header("Content-Type", 'video/mp4');
+    $response->header("Content-Length", Storage::disk('public')->size($src));
+
+    return $response;
+
+})->name('api.video');

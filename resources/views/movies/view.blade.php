@@ -108,6 +108,10 @@
                 @foreach($movie->info['videos'] as $video)
                     <div class="col-xs-2">
                         <p>{{ $video['title'] }}: {{ $video['type'] }}</p>
+                        <video width="320" height="240" controls>
+                            <source src="{{ route('api.video', ['name' => basename($video['url'])]) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 @endforeach
             </div>
